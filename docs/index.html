@@ -1,16 +1,45 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="One concept a day. PhD-level ideas in kindergarten-simple language.">
-  <title>Common Project</title>
+  <meta name="description" content="Order hidden in chaos. Simple rules create complex patterns.">
+  <title>Emergent Complexity | Common Project</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <main id="concept-container" role="main" aria-live="polite">
-    <p class="loading">Loading today's concept...</p>
+  <main id="concept-container" role="main">
+    <header class="hero">
+      <h1>Order Hidden in Chaos</h1>
+      <p class="manifesto">It is easy to predict a few next steps.<br>But extremely hard to predict patterns down the line.</p>
+    </header>
+
+    <section class="simulation-section">
+      <h2>Langton's Ant</h2>
+      <p class="sim-description">An agent follows simple rules, creating complex highways from random noise.</p>
+      <div class="simulation-container">
+        <canvas id="ant-canvas" role="img" aria-label="Interactive Langton's Ant simulation showing emergent highway patterns"></canvas>
+      </div>
+      <div class="controls">
+        <button id="ant-start" aria-label="Start Langton's Ant simulation">Start</button>
+        <button id="ant-reset" aria-label="Reset Langton's Ant simulation">Reset</button>
+      </div>
+    </section>
+
+    <section class="simulation-section">
+      <h2>Cellular Automata</h2>
+      <p class="sim-description">Neighbors determine survival. Complex life emerges from empty space.</p>
+      <div class="simulation-container">
+        <canvas id="life-canvas" role="img" aria-label="Interactive Game of Life simulation showing emergent patterns"></canvas>
+      </div>
+      <div class="controls">
+        <button id="life-start" aria-label="Start Game of Life simulation">Start</button>
+        <button id="life-reset" aria-label="Reset Game of Life simulation">Reset</button>
+      </div>
+    </section>
+
+    <footer class="site-footer">Day 4: Emergent Complexity | Common Projects</footer>
   </main>
-  <script src="js/script.js"></script>
+  <script src="js/simulations.js"></script>
 </body>
 </html>
