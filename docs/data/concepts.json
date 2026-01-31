@@ -1,0 +1,452 @@
+﻿[
+    {
+        "day":  1,
+        "concept_title":  "Probability Basics",
+        "theme":  "Statistics",
+        "kindergarten_explanation":  "Flip a coin. It can land heads or tails, but you cannot know before you flip. Probability is organized counting of what could happen. If a jar has 5 red and 5 blue marbles, you have a 1 in 2 chance for each color. If there are 4 equally likely outcomes, each is 1 in 4. The more you know about the situation, the better your guess.",
+        "why_it_matters":  "Probability helps you make smarter choices, from packing an umbrella when rain is likely to picking the faster checkout line.",
+        "connections_unlocked":  "Leads to Day 2: Bayesian Statistics. Leads to Day 15: Game Theory Basics. Related to Day 39: Monte Carlo Methods.",
+        "quick_exercise":  "What is the probability you will eat pizza this week? List three reasons for and three reasons against, then decide if it feels more likely or less likely than 50 percent."
+    },
+    {
+        "day":  2,
+        "concept_title":  "Bayesian Statistics",
+        "theme":  "Statistics",
+        "kindergarten_explanation":  "Start with a guess, then update it when you get new clues. If you think there is a 30 percent chance of rain and you see dark clouds, you should raise your guess. You keep your old belief, but blend it with the new evidence. That is Bayesian thinking: you get smarter every time you learn something.",
+        "why_it_matters":  "Bayesian thinking powers everything from spam filters to medical tests because it updates beliefs instead of starting from scratch.",
+        "connections_unlocked":  "Builds on Day 1: Probability Basics. Leads to Day 6: Optimal Foraging Theory. Related to Day 40: Markov Chains.",
+        "quick_exercise":  "You think there is a 20 percent chance your friend will call tonight. Then you remember it is their birthday. How should your guess change?"
+    },
+    {
+        "day":  3,
+        "concept_title":  "Power Laws",
+        "theme":  "Systems",
+        "kindergarten_explanation":  "In many systems, a few things are huge while most are small. A few videos get most of the views, a few cities hold most people, and a few earthquakes release most energy. This is a power law. It often happens when success feeds more success, like a snowball that grows faster once it gets big.",
+        "why_it_matters":  "Power laws explain why a small number of causes create most of the impact, from wealth to attention.",
+        "connections_unlocked":  "Leads to Day 4: Emergent Complexity. Leads to Day 21: Pareto Principle. Related to Day 20: Network Effects.",
+        "quick_exercise":  "List five things you use. Which one gets most of your attention? Does a small number of items dominate your time?"
+    },
+    {
+        "day":  4,
+        "concept_title":  "Emergent Complexity",
+        "theme":  "Systems",
+        "kindergarten_explanation":  "Give many parts a few simple rules and surprising patterns can appear. Ants follow simple trail rules, yet a colony builds complex nests. Drivers follow basic rules, yet traffic jams form. Emergent complexity means the whole can do things no single part can predict.",
+        "why_it_matters":  "In complex systems, changing the rules of interaction often matters more than controlling individual parts.",
+        "connections_unlocked":  "Builds on Day 3: Power Laws. Leads to Day 5: State Changes. Related to Day 17: Chaos Theory.",
+        "quick_exercise":  "Watch a flock of birds or a school of fish. What simple rule might each individual follow to create the group motion?"
+    },
+    {
+        "day":  5,
+        "concept_title":  "State Changes (Phase Transitions)",
+        "theme":  "Systems",
+        "kindergarten_explanation":  "Slow changes can push a system to a tipping point, then it suddenly flips. Heat ice slowly and it stays ice, then it melts. Add cars to a road and traffic flows, then it jams. A state change is a dramatic shift after small steps add up.",
+        "why_it_matters":  "Spotting tipping points helps you prevent bad shifts or trigger good ones before it is too late.",
+        "connections_unlocked":  "Builds on Day 4: Emergent Complexity. Leads to Day 23: Tipping Points. Related to Day 34: Second Law of Thermodynamics.",
+        "quick_exercise":  "Think of a moment that changed suddenly after building slowly, like learning a skill or losing patience. What was the tipping point?"
+    },
+    {
+        "day":  6,
+        "concept_title":  "Optimal Foraging Theory",
+        "theme":  "Biology",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  7,
+        "concept_title":  "Life History Theory",
+        "theme":  "Biology",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  8,
+        "concept_title":  "Lack\u0027s Hypothesis",
+        "theme":  "Biology",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  9,
+        "concept_title":  "VDJ Recombination",
+        "theme":  "Biology",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  10,
+        "concept_title":  "Spandrels",
+        "theme":  "Evolution",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  11,
+        "concept_title":  "Punctuated Equilibrium",
+        "theme":  "Evolution",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  12,
+        "concept_title":  "Heterozygote Advantage",
+        "theme":  "Evolution",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  13,
+        "concept_title":  "Lamarckian Evolution",
+        "theme":  "Evolution",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  14,
+        "concept_title":  "Demographic Transition",
+        "theme":  "Society",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  15,
+        "concept_title":  "Game Theory Basics",
+        "theme":  "Economics",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  16,
+        "concept_title":  "Nash Equilibrium",
+        "theme":  "Economics",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  17,
+        "concept_title":  "Chaos Theory",
+        "theme":  "Systems",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  18,
+        "concept_title":  "Butterfly Effect",
+        "theme":  "Systems",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  19,
+        "concept_title":  "Feedback Loops",
+        "theme":  "Systems",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  20,
+        "concept_title":  "Network Effects",
+        "theme":  "Systems",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  21,
+        "concept_title":  "Pareto Principle (80/20 Rule)",
+        "theme":  "Systems",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  22,
+        "concept_title":  "Scaling Laws",
+        "theme":  "Systems",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  23,
+        "concept_title":  "Tipping Points",
+        "theme":  "Systems",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  24,
+        "concept_title":  "Resilience in Systems",
+        "theme":  "Systems",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  25,
+        "concept_title":  "Evolutionary Stable Strategies",
+        "theme":  "Evolution",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  26,
+        "concept_title":  "Kin Selection",
+        "theme":  "Evolution",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  27,
+        "concept_title":  "Epigenetics",
+        "theme":  "Biology",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  28,
+        "concept_title":  "Niche Construction",
+        "theme":  "Evolution",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  29,
+        "concept_title":  "Cultural Evolution",
+        "theme":  "Society",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  30,
+        "concept_title":  "Memetics",
+        "theme":  "Society",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  31,
+        "concept_title":  "Homeostasis",
+        "theme":  "Biology",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  32,
+        "concept_title":  "Allostasis",
+        "theme":  "Biology",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  33,
+        "concept_title":  "Entropy",
+        "theme":  "Physics",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  34,
+        "concept_title":  "Second Law of Thermodynamics",
+        "theme":  "Physics",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  35,
+        "concept_title":  "Information Theory",
+        "theme":  "Systems",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  36,
+        "concept_title":  "Shannon Entropy",
+        "theme":  "Systems",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  37,
+        "concept_title":  "Fractals",
+        "theme":  "Mathematics",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  38,
+        "concept_title":  "Mandelbrot Set",
+        "theme":  "Mathematics",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  39,
+        "concept_title":  "Monte Carlo Methods",
+        "theme":  "Statistics",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  40,
+        "concept_title":  "Markov Chains",
+        "theme":  "Statistics",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  41,
+        "concept_title":  "Red Queen Hypothesis",
+        "theme":  "Evolution",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  42,
+        "concept_title":  "Founder Effect",
+        "theme":  "Evolution",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  43,
+        "concept_title":  "Bottleneck Effect",
+        "theme":  "Evolution",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  44,
+        "concept_title":  "Genetic Drift",
+        "theme":  "Evolution",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  45,
+        "concept_title":  "Allee Effect",
+        "theme":  "Ecology",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  46,
+        "concept_title":  "Keystone Species",
+        "theme":  "Ecology",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  47,
+        "concept_title":  "Trophic Cascades",
+        "theme":  "Ecology",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  48,
+        "concept_title":  "Succession",
+        "theme":  "Ecology",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  49,
+        "concept_title":  "Island Biogeography",
+        "theme":  "Ecology",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    },
+    {
+        "day":  50,
+        "concept_title":  "Metapopulations",
+        "theme":  "Ecology",
+        "kindergarten_explanation":  "Detailed explanation coming soon.",
+        "why_it_matters":  "Coming soon.",
+        "connections_unlocked":  "Coming soon.",
+        "quick_exercise":  "Coming soon."
+    }
+]

@@ -1,0 +1,91 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=Source+Sans+3:wght@400;600&display=swap");
+
+:root {
+  --bg: #f6f3ee;
+  --bg-accent: #ece6dc;
+  --ink: #1c1b1a;
+  --muted: #5b5a57;
+  --rule: #d9d2c6;
+  --accent: #2f5f5a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, var(--bg), var(--bg-accent));
+  color: var(--ink);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3.5rem 1.75rem;
+  line-height: 1.7;
+}
+
+#concept-container {
+  max-width: 640px;
+  width: 100%;
+  animation: fadeIn 300ms ease-out;
+}
+
+.concept-title {
+  font-family: "Fraunces", "Georgia", serif;
+  font-size: 2.1rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.75rem;
+  color: var(--ink);
+}
+
+.section {
+  margin-bottom: 1.4rem;
+}
+
+.section-title {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.45rem;
+}
+
+.section-content {
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.day-indicator {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--rule);
+}
+
+.loading {
+  text-align: center;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 2.5rem 1.25rem 3rem;
+    align-items: flex-start;
+  }
+
+  .concept-title {
+    font-size: 1.75rem;
+  }
+}

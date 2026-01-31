@@ -1,14 +1,10 @@
-# Common Project: One Concept a Day
+﻿# Common Project: One Concept a Day
 
-**[Visit the Website](https://matthew41785338.github.io/common-projects/)** | **50 concepts complete**
+**[Visit the Website](https://mschwar.github.io/common-project/)** | **Progress: 5 of 50 concepts completed**
 
 ## Overview
 
-A collection of PhD-level concepts explained in kindergarten-simple language. Each entry distills complex ideas from science, statistics, biology, evolution, and systems thinking into bite-sized explanations.
-
-The website displays one concept per day, cycling through all 50 based on the day of year. Minimal, serene, no clutter.
-
-Topics span: probability, game theory, chaos, evolution, ecology, thermodynamics, and more.
+A collection of PhD-level concepts explained in kindergarten-simple language. The site shows one concept per day, cycling through 50 based on the day of year. The first five entries are fully written; the rest are placeholders so we can perfect the UX first.
 
 ## Live Site
 
@@ -16,22 +12,24 @@ The page shows today's concept automatically. Return tomorrow for the next one.
 
 Features:
 - Daily rotation (day of year modulo 50)
-- Full explanation with connections to other concepts
+- Minimal layout focused on one concept at a time
 - Mobile-responsive design
 
 ## Repository Structure
 
-- `/docs/` - GitHub Pages site
+- `/docs/` - GitHub Pages site (served)
   - `index.html` - Minimal single-page display
-  - `concepts.json` - All 50 concepts with full content
-  - `script.js` - Daily cycling logic
-  - `styles.css` - Clean, minimal styling
+  - `css/style.css` - Layout and typography
+  - `js/script.js` - Daily cycling logic
+  - `data/concepts.json` - Concepts data (first 5 filled, 6-50 placeholders)
+  - `full-index.md` - Legacy outline index
 - `/entries/` - Original markdown source files
 - `/scripts/` - Automation tools
+- `/index.html` - Local mirror of the Pages landing page
 
 ## Setup
 
-GitHub Pages serves from `/docs` folder on `main` branch. No build step required.
+GitHub Pages serves from `/docs` on the `main` branch. No build step required.
 
 ## License
 
