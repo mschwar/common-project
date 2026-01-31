@@ -1,13 +1,16 @@
-﻿const CONCEPTS_URL = "data/concepts.json";
-const CACHE_KEY = "common-projects-concepts-v1";
-const CACHE_TIME_KEY = "common-projects-concepts-time-v1";
+const CONCEPTS_URL = "data/concepts.json";
+const CACHE_KEY = "common-projects-concepts-v2";
+const CACHE_TIME_KEY = "common-projects-concepts-time-v2";
 const CACHE_TTL_MS = 24 * 60 * 60 * 1000;
+
+// Temporarily hardcode to Day 4 (index 3) for featured card
+const FEATURED_INDEX = 3;
 
 const container = document.getElementById("concept-container");
 
 document.addEventListener("DOMContentLoaded", () => {
   loadConcepts()
-    .then((concepts) => renderToday(concepts))
+    .then((concepts) => renderConcept(concepts))
     .catch(() => {
       container.innerHTML = '<p class="loading">Unable to load today\'s concept. Please try again later.</p>';
     });
@@ -57,17 +60,14 @@ function writeCache(concepts) {
   }
 }
 
-function renderToday(concepts) {
+function renderConcept(concepts) {
   if (!Array.isArray(concepts) || concepts.length === 0) {
     container.innerHTML = '<p class="loading">No concepts available.</p>';
     return;
   }
 
-  const today = new Date();
-  const startOfYear = new Date(today.getFullYear(), 0, 0);
-  const dayOfYear = Math.floor((today - startOfYear) / 86400000);
-  const index = (dayOfYear - 1) % concepts.length;
-  const concept = concepts[(index + concepts.length) % concepts.length];
+  // Use featured index instead of day-of-year cycling
+  const concept = concepts[FEATURED_INDEX];
 
   const connections = Array.isArray(concept.connections_unlocked)
     ? concept.connections_unlocked.join(" ")
@@ -78,7 +78,7 @@ function renderToday(concepts) {
       <h1 class="concept-title">${escapeHtml(concept.concept_title)}</h1>
 
       <section class="section">
-        <p class="section-content">${escapeHtml(concept.kindergarten_explanation)}</p>
+        <div class="section-content">${formatText(concept.kindergarten_explanation)}</div>
       </section>
 
       <section class="section">
@@ -96,9 +96,25 @@ function renderToday(concepts) {
         <p class="section-content">${escapeHtml(concept.quick_exercise)}</p>
       </section>
 
-      <p class="day-indicator">Day ${escapeHtml(String(concept.day))} of ${escapeHtml(String(concepts.length))}</p>
+      <p class="day-indicator">Featured: Day ${escapeHtml(String(concept.day))} of ${escapeHtml(String(concepts.length))}</p>
     </article>
   `;
+}
+
+function formatText(text) {
+  if (!text) return "";
+
+  // Handle code blocks first
+  let formatted = text.replace(/```\n?([\s\S]*?)```/g, (match, code) => {
+    return `<pre class="grid">${escapeHtml(code.trim())}</pre>`;
+  });
+
+  // Escape remaining HTML and handle line breaks
+  const parts = formatted.split(/(<pre class="grid">[\s\S]*?<\/pre>)/);
+  return parts.map(part => {
+    if (part.startsWith('<pre')) return part;
+    return escapeHtml(part).replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
+  }).join('');
 }
 
 function escapeHtml(text) {

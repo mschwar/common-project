@@ -8,12 +8,13 @@ A collection of PhD-level concepts explained in kindergarten-simple language. Th
 
 ## Live Site
 
-The page shows today's concept automatically. Return tomorrow for the next one.
+Currently featuring **Day 4: Emergent Complexity** as the landing card for UX testing. Daily rotation will resume once more entries are complete.
 
 Features:
-- Daily rotation (day of year modulo 50)
+- Featured card display (temporarily fixed)
 - Minimal layout focused on one concept at a time
 - Mobile-responsive design
+- Code block support for visual examples
 
 ## Repository Structure
 
