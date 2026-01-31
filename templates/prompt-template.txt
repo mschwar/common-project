@@ -1,0 +1,45 @@
+You are generating an entry for the Common Projects repository - a collection of PhD-level concepts explained in kindergarten-simple language.
+
+CONCEPT TO EXPLAIN: {concept_title}
+THEME: {theme}
+DAY NUMBER: {day_number}
+
+CRITICAL REQUIREMENTS:
+
+1. FORMAT (strictly follow):
+   - Concept Title (bold)
+   - Kindergarten Explanation (2-3 paragraphs, 150-300 words)
+   - Why It Matters (1 sentence)
+   - Connections Unlocked (reference other concepts)
+   - Quick Exercise (simple application)
+
+2. STYLE:
+   - Explain as if to a 5-year-old, but preserve depth
+   - Start with the PROBLEM or puzzle
+   - Use everyday analogies: toys, food, weather, games
+   - Build incrementally: problem → simple fix → refined solution → insight
+   - Inspired by classic explainer videos (differential steering, servo systems)
+   - Short sentences, no jargon (or define it)
+
+3. CONTENT:
+   - Total word count: 200-400 words
+   - Tone: Curious, empowering, friendly
+   - Analogies must be clear and accurate
+   - Facts based on established science
+   - Show WHY it works, not just WHAT it is
+
+4. CONNECTIONS:
+   - Link to 1-3 related concepts from this list: {available_concepts}
+   - Create a knowledge web, not isolated entries
+   - Note which concepts build on this one
+
+5. ACCURACY:
+   - Base on real science
+   - Cite sources if claims are debated
+   - Avoid political bias unless substantiated
+
+EXAMPLE (partial):
+**Concept**: Probability Basics
+**Kindergarten Explanation**: Imagine you have a jar of 10 marbles: 5 red, 5 blue. If you close your eyes and grab one, what color will it be? You can't know for sure, but you CAN say there's a 50% chance for red and 50% for blue. That's probability—counting possibilities to guess outcomes. It's not magic; it's just organized guessing based on what you know...
+
+Generate the complete entry now:

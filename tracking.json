@@ -1,0 +1,64 @@
+{
+  "completed": [
+    {
+      "day": 1,
+      "title": "Probability Basics",
+      "theme": "Statistics"
+    },
+    {
+      "day": 2,
+      "title": "Bayesian Statistics",
+      "theme": "Statistics"
+    },
+    {
+      "day": 3,
+      "title": "Power Laws",
+      "theme": "Systems"
+    },
+    {
+      "day": 4,
+      "title": "Emergent Complexity",
+      "theme": "Systems"
+    },
+    {
+      "day": 5,
+      "title": "State Changes",
+      "theme": "Systems"
+    }
+  ],
+  "in_progress": null,
+  "last_generated": "2026-01-31",
+  "last_day_number": 5,
+  "connections": {
+    "1": [
+      2,
+      15,
+      39
+    ],
+    "2": [
+      1,
+      6,
+      40
+    ],
+    "3": [
+      4,
+      21,
+      20
+    ],
+    "4": [
+      3,
+      5,
+      17
+    ],
+    "5": [
+      4,
+      23,
+      34
+    ]
+  },
+  "metadata": {
+    "total_concepts": 50,
+    "created": "2026-01-31",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,28 @@
+# Python linting configuration for flake8
+
+[flake8]
+max-line-length = 100
+max-complexity = 10
+exclude =
+    .git,
+    __pycache__,
+    .venv,
+    venv,
+    ENV,
+    env,
+    build,
+    dist,
+    .eggs,
+    *.egg-info
+
+# Ignore specific errors
+ignore =
+    E203,  # whitespace before ':'
+    W503,  # line break before binary operator
+    
+# Treat these as errors
+select = E,W,F,C
+
+# Per-file ignores
+per-file-ignores =
+    __init__.py:F401
