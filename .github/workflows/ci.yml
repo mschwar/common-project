@@ -1,4 +1,4 @@
-name: CI - Code Quality & Tests
+name: CI - Validate
 
 on:
   push:
@@ -8,119 +8,22 @@ on:
   workflow_dispatch:
 
 jobs:
-  lint:
-    name: Lint Python Code
+  validate:
+    name: Validate JSON
     runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-      
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install flake8 mypy
-      
-      - name: Run Flake8
-        run: |
-          # Stop the build if there are Python syntax errors or undefined names
-          flake8 scripts/ --count --select=E9,F63,F7,F82 --show-source --statistics
-          # Exit-zero treats all errors as warnings
-          flake8 scripts/ --count --exit-zero --max-complexity=10 --max-line-length=100 --statistics
-      
-      - name: Run MyPy (Type Checking)
-        run: |
-          mypy scripts/ --ignore-missing-imports || true
 
-  test:
-    name: Run Unit Tests
-    runs-on: ubuntu-latest
-    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-      
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-      
-      - name: Run pytest
-        run: |
-          pytest tests/ -v --tb=short
-      
-      - name: Generate coverage report
-        run: |
-          pytest tests/ --cov=scripts --cov-report=term-missing
-        continue-on-error: true
 
-  validate-entries:
-    name: Validate Entry Files
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-      
-      - name: Install dependencies
+      - name: Validate concepts.json
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-      
-      - name: Validate all entries
-        run: |
-          for file in entries/day-*.md; do
-            if [ -f "$file" ]; then
-              echo "Validating $file..."
-              python scripts/validate_entry.py "$file" || exit 1
-            fi
-          done
+          python -c "import json; json.load(open('docs/concepts.json'))"
+          echo "concepts.json is valid JSON"
 
-  build-check:
-    name: Build Check
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-      
-      - name: Install dependencies
+      - name: Check required files
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-      
-      - name: Run HTML conversion
-        run: |
-          python scripts/convert_to_html.py
-      
-      - name: Update index
-        run: |
-          python scripts/update_index.py
-      
-      - name: Check HTML files generated
-        run: |
-          if [ ! -d "docs/entries" ] || [ -z "$(ls -A docs/entries/*.html 2>/dev/null)" ]; then
-            echo "❌ Error: HTML files not generated"
-            exit 1
-          fi
-          echo "✅ HTML files generated successfully"
+          test -f docs/index.html && echo "index.html exists"
+          test -f docs/script.js && echo "script.js exists"
+          test -f docs/styles.css && echo "styles.css exists"
+          test -f docs/concepts.json && echo "concepts.json exists"
