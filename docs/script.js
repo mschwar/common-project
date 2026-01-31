@@ -11,8 +11,6 @@
 
 // Configuration constants
 const TOTAL_CONCEPTS = 50;
-const PROGRESS_ANIMATION_DELAY = 500; // milliseconds
-const CARD_ANIMATION_STAGGER = 100;  // milliseconds between card animations
 
 /**
  * Entry data structure
@@ -27,49 +25,24 @@ const CARD_ANIMATION_STAGGER = 100;  // milliseconds between card animations
  */
 
 /**
- * Sample entry data
- * In production, this should be loaded from a JSON file
- * generated during the build process.
+ * Entry data (loaded from docs/entries.json)
  *
  * @type {Entry[]}
  */
-const entries = [
-    {
-        day: 1,
-        title: "Probability Basics",
-        theme: "Statistics",
-        file: "day-001-probability-basics.html",
-        excerpt: "Imagine flipping a coin: it can land heads or tails, each with a 50% chance. Probability is just guessing how likely something is..."
-    },
-    {
-        day: 2,
-        title: "Bayesian Statistics",
-        theme: "Statistics",
-        file: "day-002-bayesian-statistics.html",
-        excerpt: "It's about updating your guesses when you get new information. Like a detective gathering clues..."
-    },
-    {
-        day: 3,
-        title: "Power Laws",
-        theme: "Systems",
-        file: "day-003-power-laws.html",
-        excerpt: "Most things are small, but a few are HUGE. This pattern appears everywhere from wealth to earthquakes..."
-    },
-    {
-        day: 4,
-        title: "Emergent Complexity",
-        theme: "Systems",
-        file: "day-004-emergent-complexity.html",
-        excerpt: "Simple rules from individual parts create complex behavior for the whole. Like ants building colonies..."
-    },
-    {
-        day: 5,
-        title: "State Changes",
-        theme: "Systems",
-        file: "day-005-state-changes.html",
-        excerpt: "Slow, incremental changes suddenly tip into dramatic shifts. Like ice melting or traffic jams forming..."
+let entries = [];
+
+/**
+ * Load entry data from entries.json.
+ *
+ * @returns {Promise<void>}
+ */
+async function loadEntries() {
+    const response = await fetch('entries.json', { cache: 'no-store' });
+    if (!response.ok) {
+        throw new Error(`Failed to load entries.json (${response.status})`);
     }
-];
+    entries = await response.json();
+}
 
 /**
  * Update the progress bar to show completion percentage.
@@ -83,18 +56,12 @@ function updateProgress() {
     const completed = entries.length;
     const percentage = (completed / TOTAL_CONCEPTS) * 100;
 
-    const progressBar = document.getElementById('progressBar');
     const progressText = document.getElementById('progressText');
 
-    if (!progressBar || !progressText) {
+    if (!progressText) {
         console.error('Progress bar elements not found');
         return;
     }
-
-    // Animate progress bar with delay for visual effect
-    setTimeout(() => {
-        progressBar.style.width = `${percentage}%`;
-    }, PROGRESS_ANIMATION_DELAY);
 
     progressText.textContent = `${completed} of ${TOTAL_CONCEPTS} concepts completed (${percentage.toFixed(1)}%)`;
 }
@@ -118,27 +85,13 @@ function renderEntries() {
     // Sort by day (newest first)
     const sortedEntries = [...entries].sort((a, b) => b.day - a.day);
 
-    // Use DocumentFragment for better performance
     const fragment = document.createDocumentFragment();
 
-    sortedEntries.forEach((entry, index) => {
-        const card = createEntryCard(entry);
-
-        // Initial state for animation
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-
-        fragment.appendChild(card);
-
-        // Stagger animations
-        setTimeout(() => {
-            card.style.transition = 'all 0.5s ease';
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }, CARD_ANIMATION_STAGGER * index);
+    sortedEntries.forEach((entry) => {
+        const item = createEntryItem(entry);
+        fragment.appendChild(item);
     });
 
-    // Single DOM update
     entriesList.appendChild(fragment);
 }
 
@@ -148,19 +101,19 @@ function renderEntries() {
  * @param {Entry} entry - Entry data object
  * @returns {HTMLAnchorElement} Configured anchor element
  */
-function createEntryCard(entry) {
-    const card = document.createElement('a');
-    card.href = `entries/${entry.file}`;
-    card.className = 'entry-card';
+function createEntryItem(entry) {
+    const item = document.createElement('li');
+    item.className = 'entry-item';
 
-    card.innerHTML = `
-        <div class="day">Day ${entry.day.toString().padStart(3, '0')}</div>
-        <h3>${escapeHtml(entry.title)}</h3>
-        <span class="theme">${escapeHtml(entry.theme)}</span>
-        <p class="excerpt">${escapeHtml(entry.excerpt)}</p>
+    const day = entry.day.toString().padStart(3, '0');
+
+    item.innerHTML = `
+        <div class="entry-meta">Day ${day} • ${escapeHtml(entry.theme)}</div>
+        <div class="entry-title"><a href="entries/${entry.file}">${escapeHtml(entry.title)}</a></div>
+        <div class="entry-excerpt">${escapeHtml(entry.excerpt)}</div>
     `;
 
-    return card;
+    return item;
 }
 
 /**
@@ -182,9 +135,18 @@ function escapeHtml(text) {
  *
  * @returns {void}
  */
-function initialize() {
-    updateProgress();
-    renderEntries();
+async function initialize() {
+    try {
+        await loadEntries();
+        updateProgress();
+        renderEntries();
+    } catch (error) {
+        console.error('Failed to initialize entries:', error);
+        const progressText = document.getElementById('progressText');
+        if (progressText) {
+            progressText.textContent = 'Unable to load entries.';
+        }
+    }
 }
 
 // Initialize on page load

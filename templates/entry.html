@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{description}">
+    <title>{title} - Common Project</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title"><a href="../index.html">Common Project</a></h1>
+            <p class="site-subtitle">PhD-level concepts in kindergarten-simple language.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <a href="../index.html" class="back-link">← Back to all concepts</a>
+
+        <article class="entry-content">
+            <header class="entry-header">
+                <div class="entry-day">Day {day_padded}</div>
+                <h1 class="entry-heading">{title}</h1>
+                <div class="entry-theme">{theme}</div>
+            </header>
+
+            {content_html}
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 Matthew Schwartz | MIT License</p>
+        </div>
+    </footer>
+</body>
+</html>

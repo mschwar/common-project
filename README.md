@@ -23,6 +23,21 @@ This isn't just reading—it's a toolkit for better thinking. Apply concepts to 
 - [`index.md`](./index.md): Master index with connections and themes
 - [`tracking.json`](./tracking.json): Progress tracking
 
+## Architecture
+
+```mermaid
+flowchart LR
+    A[Markdown entries<br/>/entries] --> B[validate_entry.py]
+    A --> C[convert_to_html.py]
+    A --> D[update_index.py]
+    C --> E[HTML pages<br/>/docs/entries]
+    D --> F[index.md]
+    D --> G[entries.json]
+    E --> H[GitHub Pages]
+    F --> H
+    G --> H
+```
+
 ## Quick Start
 
 ### View the Website

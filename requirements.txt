@@ -2,6 +2,7 @@
 pytest>=7.4.0
 flake8>=6.1.0
 mypy>=1.7.0
+pytest-cov>=4.1.0
 
 # Currently no runtime dependencies needed
 # Markdown parsing done with regex (consider adding markdown library in future)

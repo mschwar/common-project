@@ -22,19 +22,68 @@ from pathlib import Path
 from typing import Tuple, List
 
 # Import shared utilities
-from utils import extract_metadata, validate_section_presence, count_words
+from utils import validate_section_presence, count_words, get_repo_root
 
 
-# Validation constants
-REQUIRED_SECTIONS = [
-    "Kindergarten Explanation",
-    "Why It Matters",
-    "Connections",
-    "Exercise"
-]
-MIN_WORD_COUNT = 200
-RECOMMENDED_MAX_WORD_COUNT = 500
-FILENAME_PATTERN = r'day-\d{3}-.+\.md'
+REPO_ROOT = get_repo_root()
+sys.path.insert(0, str(REPO_ROOT))
+import config  # noqa: E402
+
+# Validation constants (centralized in config)
+REQUIRED_SECTIONS = config.REQUIRED_SECTIONS
+MIN_WORD_COUNT = config.MIN_WORD_COUNT
+RECOMMENDED_MAX_WORD_COUNT = config.RECOMMENDED_MAX_WORD_COUNT
+FILENAME_PATTERN = config.ENTRY_FILENAME_PATTERN
+
+
+def _load_content(file_path: Path) -> str:
+    """Load file content as UTF-8 text."""
+    with open(file_path, 'r', encoding='utf-8') as f:
+        return f.read()
+
+
+def _validate_sections(content: str) -> List[str]:
+    """Return error messages for missing required sections."""
+    missing = validate_section_presence(content, REQUIRED_SECTIONS)
+    return [f"Missing section: {section}" for section in missing]
+
+
+def _validate_word_count(content: str) -> List[str]:
+    """Return warning messages for out-of-range word counts."""
+    warnings: List[str] = []
+    word_count = count_words(content)
+    if word_count < MIN_WORD_COUNT:
+        warnings.append(
+            f"Word count ({word_count}) below recommended minimum ({MIN_WORD_COUNT})"
+        )
+    elif word_count > RECOMMENDED_MAX_WORD_COUNT:
+        warnings.append(
+            f"Word count ({word_count}) above recommended maximum ({RECOMMENDED_MAX_WORD_COUNT})"
+        )
+    return warnings
+
+
+def _validate_title(content: str) -> List[str]:
+    """Return error messages if H1 title is missing."""
+    if not re.search(r'^#\s+.+', content, re.MULTILINE):
+        return ["Missing title (H1 heading)"]
+    return []
+
+
+def _validate_filename(filename: str) -> List[str]:
+    """Return warning messages for nonconforming filenames."""
+    if not re.match(FILENAME_PATTERN, filename):
+        return [f"Filename doesn't follow convention: {FILENAME_PATTERN}"]
+    return []
+
+
+def _validate_connections(content: str) -> List[str]:
+    """Return warning messages if connections section lacks references."""
+    warnings: List[str] = []
+    connection_pattern = r'\b(Builds on|Leads to|Related)\b'
+    if not re.search(connection_pattern, content, re.IGNORECASE):
+        warnings.append("No clear connections to other concepts found")
+    return warnings
 
 
 def validate_entry(file_path: str) -> Tuple[bool, List[str], List[str]]:
@@ -72,40 +121,23 @@ def validate_entry(file_path: str) -> Tuple[bool, List[str], List[str]]:
         return False, [f"File not found: {file_path}"], []
     
     # Read file content
-    with open(file_path, 'r', encoding='utf-8') as f:
-        content = f.read()
+    content = _load_content(file_path_obj)
     
     # 1. Check required sections
-    missing_sections = validate_section_presence(content, REQUIRED_SECTIONS)
-    for section in missing_sections:
-        errors.append(f"Missing section: {section}")
+    errors.extend(_validate_sections(content))
     
     # 2. Word count validation
-    word_count = count_words(content)
-    if word_count < MIN_WORD_COUNT:
-        warnings.append(
-            f"Word count ({word_count}) below recommended minimum ({MIN_WORD_COUNT})"
-        )
-    elif word_count > RECOMMENDED_MAX_WORD_COUNT:
-        warnings.append(
-            f"Word count ({word_count}) above recommended maximum ({RECOMMENDED_MAX_WORD_COUNT})"
-        )
+    warnings.extend(_validate_word_count(content))
     
     # 3. Check for H1 title
-    if not re.search(r'^#\s+.+', content, re.MULTILINE):
-        errors.append("Missing title (H1 heading)")
+    errors.extend(_validate_title(content))
     
     # 4. Filename convention
     filename = file_path_obj.name
-    if not re.match(FILENAME_PATTERN, filename):
-        warnings.append(
-            f"Filename doesn't follow convention: {FILENAME_PATTERN}"
-        )
+    warnings.extend(_validate_filename(filename))
     
     # 5. Check for connections (using proper regex)
-    connection_pattern = r'\b(Builds on|Leads to|Related)\b'
-    if not re.search(connection_pattern, content, re.IGNORECASE):
-        warnings.append("No clear connections to other concepts found")
+    warnings.extend(_validate_connections(content))
     
     # Print results
     print(f"\n{'='*60}")

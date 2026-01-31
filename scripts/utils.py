@@ -11,6 +11,47 @@ from pathlib import Path
 from typing import Dict, List, Any, Optional
 
 
+def _extract_title(content: str) -> str:
+    title_match = re.search(r'^#\s+(.+)', content, re.MULTILINE)
+    return title_match.group(1).strip() if title_match else ''
+
+
+def _extract_theme(content: str) -> str:
+    theme_match = re.search(r'\*\*Theme\*\*:\s*(.+)', content)
+    return theme_match.group(1).strip() if theme_match else 'Other'
+
+
+def _extract_day(content: str) -> int:
+    day_match = re.search(r'\*\*Day\*\*:\s*(\d+)', content)
+    return int(day_match.group(1)) if day_match else 0
+
+
+def _extract_description(content: str) -> str:
+    para_match = re.search(
+        r'## Kindergarten Explanation\n\n(.+?)(?:\n\n|\n##)',
+        content,
+        re.DOTALL
+    )
+    if not para_match:
+        return ''
+
+    desc = para_match.group(1).strip()
+    return desc[:150] + '...' if len(desc) > 150 else desc
+
+
+def _extract_connections(content: str) -> List[int]:
+    connections_section = re.search(
+        r'##\s*Connections.*?(?=##|$)',
+        content,
+        re.DOTALL | re.IGNORECASE
+    )
+    if not connections_section:
+        return []
+
+    day_refs = re.findall(r'\bDay\s+(\d+)\b', connections_section.group(0))
+    return [int(d) for d in day_refs]
+
+
 def extract_metadata(content: str) -> Dict[str, Any]:
     """
     Extract metadata from markdown entry content.
@@ -32,51 +73,13 @@ def extract_metadata(content: str) -> Dict[str, Any]:
         >>> meta['title']
         'Probability'
     """
-    metadata: Dict[str, Any] = {
-        'title': '',
-        'theme': 'Other',
-        'day': 0,
-        'description': '',
-        'connections': []
+    return {
+        'title': _extract_title(content),
+        'theme': _extract_theme(content),
+        'day': _extract_day(content),
+        'description': _extract_description(content),
+        'connections': _extract_connections(content)
     }
-    
-    # Extract title (first H1 heading)
-    title_match = re.search(r'^#\s+(.+)', content, re.MULTILINE)
-    if title_match:
-        metadata['title'] = title_match.group(1).strip()
-    
-    # Extract theme from metadata section
-    theme_match = re.search(r'\*\*Theme\*\*:\s*(.+)', content)
-    if theme_match:
-        metadata['theme'] = theme_match.group(1).strip()
-    
-    # Extract day number
-    day_match = re.search(r'\*\*Day\*\*:\s*(\d+)', content)
-    if day_match:
-        metadata['day'] = int(day_match.group(1))
-    
-    # Extract first paragraph for description
-    para_match = re.search(
-        r'## Kindergarten Explanation\n\n(.+?)(?:\n\n|\n##)', 
-        content, 
-        re.DOTALL
-    )
-    if para_match:
-        desc = para_match.group(1).strip()
-        metadata['description'] = desc[:150] + '...' if len(desc) > 150 else desc
-    
-    # Extract connections to other days
-    connections_section = re.search(
-        r'##\s*Connections.*?(?=##|$)', 
-        content, 
-        re.DOTALL | re.IGNORECASE
-    )
-    if connections_section:
-        # Find all day references (e.g., "Day 2", "Day 15")
-        day_refs = re.findall(r'\bDay\s+(\d+)\b', connections_section.group(0))
-        metadata['connections'] = [int(d) for d in day_refs]
-    
-    return metadata
 
 
 def validate_section_presence(content: str, sections: List[str]) -> List[str]:
