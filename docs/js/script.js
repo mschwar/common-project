@@ -1,6 +1,6 @@
 const CONCEPTS_URL = "data/concepts.json";
-const CACHE_KEY = "common-projects-concepts-v2";
-const CACHE_TIME_KEY = "common-projects-concepts-time-v2";
+const CACHE_KEY = "common-projects-concepts-v3";
+const CACHE_TIME_KEY = "common-projects-concepts-time-v3";
 const CACHE_TTL_MS = 24 * 60 * 60 * 1000;
 
 // Temporarily hardcode to Day 4 (index 3) for featured card
@@ -66,7 +66,6 @@ function renderConcept(concepts) {
     return;
   }
 
-  // Use featured index instead of day-of-year cycling
   const concept = concepts[FEATURED_INDEX];
 
   const connections = Array.isArray(concept.connections_unlocked)
@@ -93,10 +92,10 @@ function renderConcept(concepts) {
 
       <section class="section">
         <p class="section-title">Quick exercise</p>
-        <p class="section-content">${escapeHtml(concept.quick_exercise)}</p>
+        <p class="section-content">${formatExercise(concept.quick_exercise)}</p>
       </section>
 
-      <p class="day-indicator">Featured: Day ${escapeHtml(String(concept.day))} of ${escapeHtml(String(concepts.length))}</p>
+      <footer class="site-footer">Day ${concept.day}: ${escapeHtml(concept.concept_title)} | Common Projects</footer>
     </article>
   `;
 }
@@ -104,17 +103,31 @@ function renderConcept(concepts) {
 function formatText(text) {
   if (!text) return "";
 
-  // Handle code blocks first
+  // Handle code blocks - convert to grid class
   let formatted = text.replace(/```\n?([\s\S]*?)```/g, (match, code) => {
     return `<pre class="grid">${escapeHtml(code.trim())}</pre>`;
   });
 
-  // Escape remaining HTML and handle line breaks
+  // Split by pre tags to handle text vs code separately
   const parts = formatted.split(/(<pre class="grid">[\s\S]*?<\/pre>)/);
   return parts.map(part => {
     if (part.startsWith('<pre')) return part;
-    return escapeHtml(part).replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
+    // Handle bold text
+    let processed = part.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    // Escape and handle line breaks
+    processed = escapeHtml(processed)
+      .replace(/&lt;strong&gt;/g, '<strong>')
+      .replace(/&lt;\/strong&gt;/g, '</strong>')
+      .replace(/\n\n/g, '</p><p>')
+      .replace(/\n/g, '<br>');
+    return processed;
   }).join('');
+}
+
+function formatExercise(text) {
+  if (!text) return "";
+  // Handle em tags for pro tip
+  return text.replace(/<em>(.*?)<\/em>/g, '<em>$1</em>');
 }
 
 function escapeHtml(text) {

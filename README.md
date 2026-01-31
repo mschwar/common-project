@@ -8,7 +8,7 @@ A collection of PhD-level concepts explained in kindergarten-simple language. Th
 
 ## Live Site
 
-Currently featuring **Day 4: Emergent Complexity** as the landing card for UX testing. Daily rotation will resume once more entries are complete.
+Live preview features the **Emergent Complexity** card (Day 4) for iteration. Daily rotation will resume once more entries are complete.
 
 Features:
 - Featured card display (temporarily fixed)
