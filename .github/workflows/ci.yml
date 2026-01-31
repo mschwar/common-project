@@ -18,12 +18,12 @@ jobs:
 
       - name: Validate concepts.json
         run: |
-          python -c "import json; json.load(open('docs/concepts.json'))"
+          python -c "import json; json.load(open('docs/data/concepts.json'))"
           echo "concepts.json is valid JSON"
 
       - name: Check required files
         run: |
           test -f docs/index.html && echo "index.html exists"
-          test -f docs/script.js && echo "script.js exists"
-          test -f docs/styles.css && echo "styles.css exists"
-          test -f docs/concepts.json && echo "concepts.json exists"
+          test -f docs/js/script.js && echo "script.js exists"
+          test -f docs/css/style.css && echo "style.css exists"
+          test -f docs/data/concepts.json && echo "concepts.json exists"
