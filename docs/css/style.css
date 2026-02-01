@@ -130,8 +130,9 @@ body {
 
 .grid-3x3 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  max-width: 240px;
+  grid-template-columns: repeat(3, 70px);
+  grid-template-rows: repeat(3, 70px);
+  width: fit-content;
   margin: 1rem auto;
   border: 2px solid #333;
   border-radius: 4px;
@@ -139,7 +140,8 @@ body {
 }
 
 .grid-3x3 .cell {
-  aspect-ratio: 1;
+  width: 70px;
+  height: 70px;
   border: 1px solid #999;
   background: #fff;
   cursor: pointer;
@@ -224,7 +226,13 @@ body {
   }
 
   .grid-3x3 {
-    max-width: 200px;
+    grid-template-columns: repeat(3, 60px);
+    grid-template-rows: repeat(3, 60px);
+  }
+
+  .grid-3x3 .cell {
+    width: 60px;
+    height: 60px;
   }
 
   .below-fold {
