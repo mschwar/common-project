@@ -4,14 +4,9 @@
 (function() {
   const FPS = 30;
   const FRAME_TIME = 1000 / FPS;
-
-  // ========== GAME OF LIFE ==========
-  const lifeCanvas = document.getElementById('life-canvas');
-  const lifeCtx = lifeCanvas.getContext('2d');
-  const lifeStartBtn = document.getElementById('life-start');
-  const lifeResetBtn = document.getElementById('life-reset');
-
   const LIFE_GRID_SIZE = 80;
+
+  let lifeCanvas, lifeCtx, lifeStartBtn, lifeResetBtn;
   let lifeGrid, lifeNext, lifeRunning, lifeAnimId, lifeLastTime;
 
   function initLife() {
@@ -19,7 +14,6 @@
     lifeCanvas.height = lifeCanvas.offsetHeight;
     lifeGrid = new Uint8Array(LIFE_GRID_SIZE * LIFE_GRID_SIZE);
     lifeNext = new Uint8Array(LIFE_GRID_SIZE * LIFE_GRID_SIZE);
-    // Random seed
     for (let i = 0; i < lifeGrid.length; i++) {
       lifeGrid[i] = Math.random() < 0.3 ? 1 : 0;
     }
@@ -47,10 +41,8 @@
         const idx = y * LIFE_GRID_SIZE + x;
         const neighbors = countNeighbors(x, y);
         if (lifeGrid[idx] === 1) {
-          // Alive: survive with 2-3 neighbors
           lifeNext[idx] = (neighbors === 2 || neighbors === 3) ? 1 : 0;
         } else {
-          // Dead: birth with exactly 3 neighbors
           lifeNext[idx] = (neighbors === 3) ? 1 : 0;
         }
       }
@@ -83,31 +75,34 @@
     lifeAnimId = requestAnimationFrame(loopLife);
   }
 
-  lifeStartBtn.addEventListener('click', () => {
-    if (lifeRunning) {
+  window.addEventListener('DOMContentLoaded', () => {
+    lifeCanvas = document.getElementById('life-canvas');
+    lifeCtx = lifeCanvas.getContext('2d');
+    lifeStartBtn = document.getElementById('life-start');
+    lifeResetBtn = document.getElementById('life-reset');
+
+    lifeStartBtn.addEventListener('click', () => {
+      if (lifeRunning) {
+        lifeRunning = false;
+        lifeStartBtn.textContent = 'Start';
+      } else {
+        lifeRunning = true;
+        lifeStartBtn.textContent = 'Pause';
+        lifeAnimId = requestAnimationFrame(loopLife);
+      }
+    });
+
+    lifeResetBtn.addEventListener('click', () => {
       lifeRunning = false;
       lifeStartBtn.textContent = 'Start';
-    } else {
-      lifeRunning = true;
-      lifeStartBtn.textContent = 'Pause';
-      lifeAnimId = requestAnimationFrame(loopLife);
-    }
-  });
+      cancelAnimationFrame(lifeAnimId);
+      initLife();
+    });
 
-  lifeResetBtn.addEventListener('click', () => {
-    lifeRunning = false;
-    lifeStartBtn.textContent = 'Start';
-    cancelAnimationFrame(lifeAnimId);
     initLife();
   });
 
-  // Initialize on load
-  window.addEventListener('load', () => {
-    initLife();
-  });
-
-  // Handle resize
   window.addEventListener('resize', () => {
-    initLife();
+    if (lifeCanvas) initLife();
   });
 })();

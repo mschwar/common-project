@@ -140,7 +140,7 @@
   lifeClearBtn.addEventListener('click', clearLife);
 
   // Initialize both grids on load
-  window.addEventListener('load', () => {
+  window.addEventListener('DOMContentLoaded', () => {
     buildAntGrid();
     buildLifeGrid();
   });
