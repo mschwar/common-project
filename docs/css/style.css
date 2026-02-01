@@ -111,15 +111,35 @@ body {
   background: #e8e8e8;
 }
 
-/* Below-fold: Life Rules Playground */
-.below-fold {
+/* Bridge Section */
+.bridge-section {
   background: #f4f4f4;
   padding: 1.5rem;
   border-radius: 6px;
   margin-bottom: 2rem;
 }
 
-.below-fold h2 {
+.bridge-section h2 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+}
+
+.bridge-section ol {
+  margin: 0.75rem 0 0.75rem 1.25rem;
+}
+
+.bridge-section li {
+  margin-bottom: 0.5rem;
+}
+
+/* Lab Sections */
+.lab-section {
+  margin-bottom: 2rem;
+}
+
+.lab-section h2 {
   font-family: "Courier New", monospace;
   font-size: 1rem;
   font-weight: 600;
@@ -128,75 +148,44 @@ body {
   letter-spacing: 0.05em;
 }
 
-.grid-3x3 {
+.lab-container {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.lab-grid {
   display: grid;
-  grid-template-columns: repeat(3, 70px);
-  grid-template-rows: repeat(3, 70px);
-  width: fit-content;
-  margin: 1rem auto;
+  grid-template-columns: repeat(9, 36px);
+  grid-template-rows: repeat(9, 36px);
   border: 2px solid #333;
   border-radius: 4px;
   overflow: hidden;
 }
 
-.grid-3x3 .cell {
-  width: 70px;
-  height: 70px;
-  border: 1px solid #999;
+.lab-cell {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #ccc;
   background: #fff;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Courier New", monospace;
-  font-size: 0.75rem;
-  color: var(--muted);
-  transition: background 0.1s, color 0.1s;
+  transition: background 0.1s;
 }
 
-.grid-3x3 .cell:hover:not(.target) {
+.lab-cell:hover {
   background: #e8e8e8;
 }
 
-.grid-3x3 .cell.active {
+.lab-cell.active {
   background: #1c1b1a;
-  color: #fff;
 }
 
-.grid-3x3 .cell.target {
-  background: #f0f0f0;
-  cursor: default;
-  font-weight: 600;
+.lab-cell.ant {
+  background: #e74c3c;
 }
 
-.grid-3x3 .cell.target.alive {
+.lab-cell.alive {
   background: var(--accent);
-  color: #fff;
-}
-
-.grid-3x3 .cell.target.dead {
-  background: #ddd;
-  color: #999;
-}
-
-.feedback {
-  font-family: "Courier New", monospace;
-  font-size: 0.85rem;
-  text-align: center;
-  color: var(--ink);
-  margin: 0.5rem 0;
-  min-height: 1.2em;
-}
-
-.heuristic-note {
-  font-size: 0.8rem;
-  color: var(--muted);
-  text-align: center;
-  margin-top: 0.75rem;
-}
-
-.heuristic-note em {
-  color: var(--accent);
 }
 
 .site-footer {
@@ -225,17 +214,17 @@ body {
     max-width: 100%;
   }
 
-  .grid-3x3 {
-    grid-template-columns: repeat(3, 60px);
-    grid-template-rows: repeat(3, 60px);
+  .lab-grid {
+    grid-template-columns: repeat(9, 30px);
+    grid-template-rows: repeat(9, 30px);
   }
 
-  .grid-3x3 .cell {
-    width: 60px;
-    height: 60px;
+  .lab-cell {
+    width: 30px;
+    height: 30px;
   }
 
-  .below-fold {
+  .bridge-section {
     padding: 1rem;
   }
 }

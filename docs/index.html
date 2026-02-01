@@ -15,18 +15,6 @@
     </header>
 
     <section class="simulation-section">
-      <h2>Langton's Ant</h2>
-      <p class="sim-description">An agent follows simple rules, creating complex highways from random noise.</p>
-      <div class="simulation-container">
-        <canvas id="ant-canvas" role="img" aria-label="Interactive Langton's Ant simulation showing emergent highway patterns"></canvas>
-      </div>
-      <div class="controls">
-        <button id="ant-start" aria-label="Start Langton's Ant simulation">Start</button>
-        <button id="ant-reset" aria-label="Reset Langton's Ant simulation">Reset</button>
-      </div>
-    </section>
-
-    <section class="simulation-section">
       <h2>Cellular Automata</h2>
       <p class="sim-description">Neighbors determine survival. Complex life emerges from empty space.</p>
       <div class="simulation-container">
@@ -38,22 +26,38 @@
       </div>
     </section>
 
-    <section id="life-rules" class="below-fold">
-      <h2>The Rules of Life</h2>
-      <p class="sim-description">Click outer cells to toggle neighbors—watch the target respond.</p>
-      <div class="grid-3x3" role="group" aria-label="Interactive 3x3 grid to explore Game of Life rules">
-        <div class="cell" aria-label="Toggle neighbor cell" tabindex="0"></div>
-        <div class="cell" aria-label="Toggle neighbor cell" tabindex="0"></div>
-        <div class="cell" aria-label="Toggle neighbor cell" tabindex="0"></div>
-        <div class="cell" aria-label="Toggle neighbor cell" tabindex="0"></div>
-        <div class="cell target" id="target-cell">?</div>
-        <div class="cell" aria-label="Toggle neighbor cell" tabindex="0"></div>
-        <div class="cell" aria-label="Toggle neighbor cell" tabindex="0"></div>
-        <div class="cell" aria-label="Toggle neighbor cell" tabindex="0"></div>
-        <div class="cell" aria-label="Toggle neighbor cell" tabindex="0"></div>
+    <section class="bridge-section">
+      <h2>The Rules Are Simple</h2>
+      <p>Every cell follows two rules:</p>
+      <ol>
+        <li><strong>Survival:</strong> A living cell with 2-3 neighbors survives; otherwise it dies.</li>
+        <li><strong>Birth:</strong> An empty cell with exactly 3 neighbors becomes alive.</li>
+      </ol>
+      <p>That's it. From these two rules, infinite complexity emerges.</p>
+    </section>
+
+    <section class="lab-section">
+      <h2>Ant Lab</h2>
+      <p class="sim-description">Click cells to paint. Step forward and watch the ant decide.</p>
+      <div class="lab-container">
+        <div id="ant-lab" class="lab-grid" role="grid" aria-label="Langton's Ant 9x9 sandbox"></div>
       </div>
-      <p id="feedback-text" class="feedback">Toggle neighbors to see the rules in action.</p>
-      <p class="heuristic-note">Balance unlocks survival—see <em>Life History Theory (Day 7)</em> for real-world trade-offs.</p>
+      <div class="controls">
+        <button id="ant-step">Step</button>
+        <button id="ant-clear">Clear</button>
+      </div>
+    </section>
+
+    <section class="lab-section">
+      <h2>Life Lab</h2>
+      <p class="sim-description">Toggle cells to seed life. Step forward and watch the rules play out.</p>
+      <div class="lab-container">
+        <div id="life-lab" class="lab-grid" role="grid" aria-label="Game of Life 9x9 sandbox"></div>
+      </div>
+      <div class="controls">
+        <button id="life-step">Step</button>
+        <button id="life-clear">Clear</button>
+      </div>
     </section>
 
     <footer class="site-footer">Day 4: Emergent Complexity | Common Projects</footer>

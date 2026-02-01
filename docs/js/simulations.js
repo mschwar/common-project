@@ -1,92 +1,9 @@
 // Emergent Complexity Simulations
-// Langton's Ant and Conway's Game of Life
+// Conway's Game of Life (canvas-based demo)
 
 (function() {
   const FPS = 30;
   const FRAME_TIME = 1000 / FPS;
-
-  // ========== LANGTON'S ANT ==========
-  const antCanvas = document.getElementById('ant-canvas');
-  const antCtx = antCanvas.getContext('2d');
-  const antStartBtn = document.getElementById('ant-start');
-  const antResetBtn = document.getElementById('ant-reset');
-
-  const ANT_GRID_SIZE = 100;
-  let antGrid, antX, antY, antDir, antRunning, antAnimId, antLastTime;
-
-  function initAnt() {
-    antCanvas.width = antCanvas.offsetWidth;
-    antCanvas.height = antCanvas.offsetHeight;
-    antGrid = new Uint8Array(ANT_GRID_SIZE * ANT_GRID_SIZE);
-    antX = Math.floor(ANT_GRID_SIZE / 2);
-    antY = Math.floor(ANT_GRID_SIZE / 2);
-    antDir = 0; // 0=up, 1=right, 2=down, 3=left
-    antRunning = false;
-    antLastTime = 0;
-    drawAnt();
-  }
-
-  function stepAnt() {
-    const idx = antY * ANT_GRID_SIZE + antX;
-    if (antGrid[idx] === 0) {
-      antDir = (antDir + 1) % 4; // Turn right on white
-      antGrid[idx] = 1;
-    } else {
-      antDir = (antDir + 3) % 4; // Turn left on black
-      antGrid[idx] = 0;
-    }
-    // Move forward
-    if (antDir === 0) antY = (antY - 1 + ANT_GRID_SIZE) % ANT_GRID_SIZE;
-    else if (antDir === 1) antX = (antX + 1) % ANT_GRID_SIZE;
-    else if (antDir === 2) antY = (antY + 1) % ANT_GRID_SIZE;
-    else antX = (antX - 1 + ANT_GRID_SIZE) % ANT_GRID_SIZE;
-  }
-
-  function drawAnt() {
-    const cellW = antCanvas.width / ANT_GRID_SIZE;
-    const cellH = antCanvas.height / ANT_GRID_SIZE;
-    antCtx.fillStyle = '#fff';
-    antCtx.fillRect(0, 0, antCanvas.width, antCanvas.height);
-    antCtx.fillStyle = '#1c1b1a';
-    for (let y = 0; y < ANT_GRID_SIZE; y++) {
-      for (let x = 0; x < ANT_GRID_SIZE; x++) {
-        if (antGrid[y * ANT_GRID_SIZE + x] === 1) {
-          antCtx.fillRect(x * cellW, y * cellH, cellW + 0.5, cellH + 0.5);
-        }
-      }
-    }
-    // Draw ant
-    antCtx.fillStyle = '#e74c3c';
-    antCtx.fillRect(antX * cellW, antY * cellH, cellW + 0.5, cellH + 0.5);
-  }
-
-  function loopAnt(timestamp) {
-    if (!antRunning) return;
-    if (timestamp - antLastTime >= FRAME_TIME) {
-      for (let i = 0; i < 10; i++) stepAnt(); // Multiple steps per frame for speed
-      drawAnt();
-      antLastTime = timestamp;
-    }
-    antAnimId = requestAnimationFrame(loopAnt);
-  }
-
-  antStartBtn.addEventListener('click', () => {
-    if (antRunning) {
-      antRunning = false;
-      antStartBtn.textContent = 'Start';
-    } else {
-      antRunning = true;
-      antStartBtn.textContent = 'Pause';
-      antAnimId = requestAnimationFrame(loopAnt);
-    }
-  });
-
-  antResetBtn.addEventListener('click', () => {
-    antRunning = false;
-    antStartBtn.textContent = 'Start';
-    cancelAnimationFrame(antAnimId);
-    initAnt();
-  });
 
   // ========== GAME OF LIFE ==========
   const lifeCanvas = document.getElementById('life-canvas');
@@ -184,15 +101,13 @@
     initLife();
   });
 
-  // Initialize both on load
+  // Initialize on load
   window.addEventListener('load', () => {
-    initAnt();
     initLife();
   });
 
   // Handle resize
   window.addEventListener('resize', () => {
-    initAnt();
     initLife();
   });
 })();
