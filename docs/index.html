@@ -38,8 +38,27 @@
       </div>
     </section>
 
+    <section id="life-rules" class="below-fold">
+      <h2>The Rules of Life</h2>
+      <p class="sim-description">Click outer cells to toggle neighbors—watch the target respond.</p>
+      <div class="grid-3x3" role="group" aria-label="Interactive 3x3 grid to explore Game of Life rules">
+        <div class="cell" aria-label="Toggle neighbor cell" tabindex="0"></div>
+        <div class="cell" aria-label="Toggle neighbor cell" tabindex="0"></div>
+        <div class="cell" aria-label="Toggle neighbor cell" tabindex="0"></div>
+        <div class="cell" aria-label="Toggle neighbor cell" tabindex="0"></div>
+        <div class="cell target" id="target-cell">?</div>
+        <div class="cell" aria-label="Toggle neighbor cell" tabindex="0"></div>
+        <div class="cell" aria-label="Toggle neighbor cell" tabindex="0"></div>
+        <div class="cell" aria-label="Toggle neighbor cell" tabindex="0"></div>
+        <div class="cell" aria-label="Toggle neighbor cell" tabindex="0"></div>
+      </div>
+      <p id="feedback-text" class="feedback">Toggle neighbors to see the rules in action.</p>
+      <p class="heuristic-note">Balance unlocks survival—see <em>Life History Theory (Day 7)</em> for real-world trade-offs.</p>
+    </section>
+
     <footer class="site-footer">Day 4: Emergent Complexity | Common Projects</footer>
   </main>
   <script src="js/simulations.js"></script>
+  <script src="js/tutorial.js"></script>
 </body>
 </html>
